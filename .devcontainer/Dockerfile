@@ -1,5 +1,5 @@
 # Base image
-FROM mcr.microsoft.com/devcontainers/base:ubuntu-24.04
+FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04
 
 # Install basic C development tools and dependencies
 RUN apt-get update && \
