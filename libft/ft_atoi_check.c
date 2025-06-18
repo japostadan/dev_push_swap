@@ -20,6 +20,8 @@ int	ft_atoi_check(char *str)
 	val = ft_atoi(str);
 	if (val == 0)
 	{
+		if(ft_strlen(str) > 9)
+			return (0);
 		i = 0;
 		while (ft_isspace(str[i]))
 			i++;
