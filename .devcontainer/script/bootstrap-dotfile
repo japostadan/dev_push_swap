@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -euo pipefail
+
+echo "[*] Bootstrapping chezmoi + dotfiles..."
+
+# Use HTTPS for compatibility (SSH requires keys)
+chezmoi init --apply https://github.com/japostadan/dotfiles.git
+
+# Run your dotfiles' own setup if it exists
+if [ -f "$HOME/dotfiles/setup" ]; then
+    echo "[*] Running dotfiles setup script..."
+    bash "$HOME/dotfiles/setup"
+fi
+
+echo "[+] Dotfiles setup completed."
+

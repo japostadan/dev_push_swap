@@ -1,0 +1,24 @@
+#!/bin/bash
+echo "Generating unique random integers..."
+
+# Clear output.txt before generating new random numbers
+> output.txt
+
+# Initialize an array to store unique numbers
+declare -a nums
+
+# Generate 5 unique random numbers between -10000 and 9999
+for i in {1..500}; do
+    rand=$((-10000 + RANDOM % 20000))  # Generate a random number in the range [-10000, 9999]
+    
+    # Check if the random number is already in the array
+    while [[ " ${nums[@]} " =~ " $rand " ]]; do
+        rand=$((-10000 + RANDOM % 20000))  # Regenerate the number if it's a duplicate
+    done
+    
+    # Store the unique random number and append it to the output file
+    nums+=($rand)
+    echo $rand >> output.txt
+done
+
+# xargs ./a.out < output.txt

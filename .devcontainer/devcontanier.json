@@ -1,0 +1,20 @@
+{
+  "name": "Dotfile Dev",
+  "build": {
+    "context": "..",
+    "dockerfile": ".devcontainer/Dockerfile"
+  },
+  "workspaceFolder": "/workspaces/project",
+  "postCreateCommand": "sh -c \"curl -fsLS get.chezmoi.io | bash -s -- init --apply https://github.com/japostadan/dotfiles.git && [ -f ~/dotfiles/setup ] && ~/dotfiles/setup\"",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "vscodevim.vim"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      }
+    }
+  }
+}
